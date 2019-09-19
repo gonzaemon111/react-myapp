@@ -88,4 +88,27 @@ class MyComponent extends React.Component {
 }
 ```
 
+---
+
+## JSXについて
+
+JSXとは、「JavaScript XML」の略で、一種のプログラミング言語です。JSXを使うことにより、「JavaScriptの中にHTMLを記述する」ような感覚でReactのコンポーネントを記述することが可能になります。
+
+なお、JSXはReactの一部ではなく完全に独立した言語であるため、Reactプログラミングにおいて必ず使わなければならないと言うわけではありません。
+
+しかしながら、JSXには圧倒的な利用価値があるため、よほどのことがない限りは利用される傾向にあります。
+
+例: JSXを使ったHello World
+
+```javascript
+ReactDOM .render(React.createElement('h1', null, 'Hello World!!!'), document.getElementById('main'));
+```
+
+```jsx
+ReactDOM.render(
+  <h1>Hello World!</h1>,
+  document.getElementById('main')
+);
+```
+
 
