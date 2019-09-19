@@ -1,68 +1,91 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React入門 リポジトリ
 
-## Available Scripts
+1. Reactって何者？
 
-In the project directory, you can run:
+Reactは、Webサイト上のUIパーツを構築するためのものJSライブラリです。
 
-### `npm start`
+Facebookが開発し、OSSとして公開しています。
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Reactには、主に3つの大きな特徴があります(公式サイトにデカデカと記載されています)。
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Declarative
 
-### `npm test`
+JSが「手続き的な」言語であることに対して、reactは「宣言的な」ライブラリなのです。
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+この特徴によって、「宣言的な」言語であるHTMLを得意とするWebデザイナーにとっても、Reactは比較的とっつきやすいライブラリだと言われています。
 
-### `npm run build`
+- Component-Based
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+これは、言葉の通り「コンポーネントベースである」と言うことを意味します。
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Reactでは様々なコンポーネントを組み合わせてUIを構築します。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+コンポーネントを正しく理解することの近道になります。
 
-### `npm run eject`
+- Learn Once, Write Anywhere
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+これは「一度覚えてしまえばどこにだって書ける」と言うことを意味します。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. 何が優れているの?
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Reactは「仮装DOM」と言う仕組みを備えているため、非常に高速なレンダリングを行うことができます。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+3. どうやって使うの？
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+先に説明した通りReactは「ライブラリ」なので、インストールと言う概念はありません。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## コンポーネントについて
 
-### Code Splitting
+Reactではあらかじめ定義しておいたコンポーネントを必要に応じて利用します。
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+JavaやC#などのオブジェクト指向言語の経験がある方は「クラスの定義 ~インスタンスの生成、利用~」に非常によく似たイメージになると捉えてください。
 
-### Analyzing the Bundle Size
+次に、コンポーネントには、**プロパティ**と**ステート**と言う概念があります。プロパティはコンポーネントに与える属性のようなものです。
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+処理の内部で変数のように自由にアクセスできますが、コンポーネント自身が値を変更することはできません。
 
-### Making a Progressive Web App
+そして、ステートはコンポーネントの内部で扱う変数のようなもので、外部からアクセスすることはできません。
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+コンポーネント生成の際に初期化し、主にコンポーネントの状態(ステータス)を保持するために使用します。
 
-### Advanced Configuration
+コンポーネントの例
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+例: プロパティ
+```javascript
+// Componentの定義
+class MyComponent extends React.Component {
+  render() {
+    // h1タグにプロパティの値を表示する。
+    return React.createElement('h1', null, this.props.val)
+  }
+}
 
-### Deployment
+//componentの利用
+ReactDOM.render(
+  // プロパティ「val」に'hoge'をセットする。
+  React.createElement(MyComponent, {val: 'hoge'}),
+  document.getElementById('main')
+);
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+例: ステート
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```javascript
+// Componentの定義
+
+class MyComponent extends React.Component {
+  constructor(props, context, updater) {
+    super(props, context, updater)
+    this.state = { status: 'Ready' }
+  }
+
+  render() {
+    // h1タグにステートの値を表示する。
+    return React.createElement('h1', null, this.state.status)
+  }
+}
+```
+
+
