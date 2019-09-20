@@ -101,7 +101,9 @@ JSXとは、「JavaScript XML」の略で、一種のプログラミング言語
 例: JSXを使ったHello World
 
 ```javascript
-ReactDOM .render(React.createElement('h1', null, 'Hello World!!!'), document.getElementById('main'));
+ReactDOM .render(
+  React.createElement('h1', null, 'Hello World!!!'), document.getElementById('main')
+);
 ```
 
 ```jsx
@@ -110,5 +112,9 @@ ReactDOM.render(
   document.getElementById('main')
 );
 ```
+
+### classではなく、className
+
+Reactでは、JSの文法の一つであるclassと区別するために
 
 
